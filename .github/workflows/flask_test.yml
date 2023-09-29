@@ -1,10 +1,11 @@
 name: Flask app Test
 
 on:
-    pull_resquest:
+    pull_request:
         branches:
             - main
-jods:
+
+jobs:
     test:
         runs-on: ubuntu-latest
         defaults:
@@ -16,7 +17,7 @@ jods:
                 python-version: [3.10]
 
         env:
-            MODE: "dev"
+            MODE: 'dev'
 
         steps:
             - uses: actions/checkout@v3
@@ -24,12 +25,14 @@ jods:
             - name: Setup Python
               uses: actions/setup-python@v4
               with:
-                python-version: ${{matrix.python-version}}
+                  python-version: ${{matrix.python-version}}
 
-            - name: install dependencies
-              run:
-              python -m pip install --upgrade pip
-              pip install -r ../requiment.txt
+            - name: Install dependencies
+              run: python -m pip install --upgrade pip
+                  pip install -r ../requirements.txt
+
+            - name: Start Flask app
+              run: flask run
 
             - name: Test app code
-              run: python ./main_test.py
+              run: python -m pytest
