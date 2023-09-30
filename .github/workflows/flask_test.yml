@@ -32,8 +32,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r ../requirements.txt
 
-      - name: Start Flask app
-        run: flask run
 
       - name: Test app code
-        run: python -m pytest
+              run: python ./main_test.py
