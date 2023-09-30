@@ -34,4 +34,4 @@ jobs:
 
 
       - name: Test app code
-              run: python ./main_test.py
+        run: python ./main_test.py
