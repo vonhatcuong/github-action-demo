@@ -1,11 +1,10 @@
 name: Flask app Test
 
 on:
-    pull_request:
+    pull_resquest:
         branches:
             - main
-
-jobs:
+jods:
     test:
         runs-on: ubuntu-latest
         defaults:
@@ -27,12 +26,9 @@ jobs:
               with:
                   python-version: ${{matrix.python-version}}
 
-            - name: Install dependencies
+            - name: install dependencies
               run: python -m pip install --upgrade pip
-                  pip install -r ../requirements.txt
-
-            - name: Start Flask app
-              run: flask run
+                  pip install -r ../requiment.txt
 
             - name: Test app code
-              run: python -m pytest
+              run: python ./main_test.py
